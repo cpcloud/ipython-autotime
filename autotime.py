@@ -4,6 +4,14 @@ import time
 
 
 class LineWatcher(object):
+
+    """Class that implements a basic timer.
+
+    Notes
+    -----
+    * Register the `start` and `stop` methods with the IPython events API.
+    """
+
     def __init__(self):
         self.start_time = 0.0
 
@@ -17,6 +25,24 @@ class LineWatcher(object):
 
 
 def format_delta(num, suffix='s', threshold=1000):
+    """Format the result of a timing in different units depending on a
+    threshold number of base units.
+
+    Parameters
+    ----------
+    num : float
+    suffix : str
+    threshold : int
+
+    Returns
+    -------
+    fmt : str
+        A pretty formatted amount of time
+
+    Notes
+    -----
+    * Based on http://stackoverflow.com/a/1094933/564538
+    """
     base_unit = 1000000000
     num *= base_unit  # smallest unit is 1 / 1000000000 of the biggest unit
     for unit in ['n', 'u', 'm', '']:
