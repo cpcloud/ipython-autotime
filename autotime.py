@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import time
+from IPython.core.magics.execution import _format_time as format_delta
 
 
 class LineWatcher(object):
@@ -22,35 +23,6 @@ class LineWatcher(object):
         diff = time.time() - self.start_time
         assert diff > 0
         print('time: %s' % format_delta(diff))
-
-
-def format_delta(num, suffix='s', threshold=1000):
-    """Format the result of a timing in different units depending on a
-    threshold number of base units.
-
-    Parameters
-    ----------
-    num : float
-    suffix : str
-    threshold : int
-
-    Returns
-    -------
-    fmt : str
-        A pretty formatted amount of time
-
-    Notes
-    -----
-    * Based on http://stackoverflow.com/a/1094933/564538
-    """
-    base_unit = 1000000000
-    num *= base_unit  # smallest unit is 1 / 1000000000 of the biggest unit
-    for unit in ['n', 'u', 'm', '']:
-        if num < threshold:
-            return '%3.2f %s%s' % (num, unit, suffix)
-        num /= threshold
-    return '%.2f %s' % (num, suffix)
-
 
 timer = LineWatcher()
 
