@@ -20,9 +20,10 @@ class LineWatcher(object):
         self.start_time = time.time()
 
     def stop(self):
-        diff = time.time() - self.start_time
-        assert diff > 0
-        print('time: %s' % format_delta(diff))
+        if self.start_time:
+            diff = time.time() - self.start_time
+            assert diff > 0
+            print('time: %s' % format_delta(diff))
 
 timer = LineWatcher()
 
