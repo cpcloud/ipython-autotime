@@ -33,3 +33,9 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 time: 156.05 ms
 ```
+
+## Want to turn it off?
+
+```python
+In [5]: %unload_ext autotime
+```
