@@ -25,7 +25,7 @@ class LineWatcher(object):
 
         if self.start_time:
             diff = stop_time - self.start_time
-            assert diff > 0
+            assert diff >= 0
             print('time: {}'.format(format_delta(diff)))
 
 
@@ -40,6 +40,7 @@ def load_ipython_extension(ip):
 def unload_ipython_extension(ip):
     ip.events.unregister('pre_run_cell', timer.start)
     ip.events.unregister('post_run_cell', timer.stop)
+
 
 from ._version import get_versions
 __version__ = get_versions()['version']
