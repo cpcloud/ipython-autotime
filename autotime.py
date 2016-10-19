@@ -23,7 +23,7 @@ class LineWatcher(object):
         if self.start_time:
             diff = time.time() - self.start_time
             assert diff > 0
-            print('time: %s' % format_delta(diff))
+            print('\ntime: %s' % format_delta(diff))
 
 timer = LineWatcher()
 
