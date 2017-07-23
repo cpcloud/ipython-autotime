@@ -1,0 +1,2 @@
+include versioneer.py
+include autotime/_version.py
