@@ -1,8 +1,17 @@
 from __future__ import print_function
 
 import time
+import sys
 
 from IPython.core.magics.execution import _format_time as format_delta
+
+if sys.platform == 'win32':
+    if sys.version_info >= (3, 3):
+        _timer = time.perf_counter
+    else:
+        _timer = time.clock
+else:
+    _timer = time.time
 
 
 class LineWatcher(object):
@@ -18,14 +27,14 @@ class LineWatcher(object):
         self.start_time = 0.0
 
     def start(self):
-        self.start_time = time.time()
+        self.start_time = _timer()
 
     def stop(self):
-        stop_time = time.time()
+        stop_time = _timer()
 
         if self.start_time:
             diff = stop_time - self.start_time
-            assert diff > 0
+            assert diff >= 0
             print('time: {}'.format(format_delta(diff)))
 
 
