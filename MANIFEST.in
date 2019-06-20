@@ -1,2 +1,4 @@
 include versioneer.py
 include autotime/_version.py
+include LICENSE
+include README.md
