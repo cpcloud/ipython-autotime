@@ -5,11 +5,10 @@ import sys
 
 from IPython.core.magics.execution import _format_time as format_delta
 
-if sys.platform == 'win32':
-    if sys.version_info >= (3, 3):
-        _timer = time.perf_counter
-    else:
-        _timer = time.clock
+if sys.version_info >= (3, 3):
+    _timer = time.perf_counter
+elif sys.platform == 'win32':
+    _timer = time.clock
 else:
     _timer = time.time
 
@@ -34,7 +33,7 @@ class LineWatcher(object):
 
         if self.start_time:
             diff = stop_time - self.start_time
-            assert diff >= 0
+            assert diff > 0
             print('time: {}'.format(format_delta(diff)))
 
 
