@@ -1,6 +1,9 @@
 from __future__ import print_function
 
-from time import monotonic
+try:
+    from time import monotonic
+except ImportError:
+    from monotonic import monotonic
 
 from IPython.core.magics.execution import _format_time as format_delta
 

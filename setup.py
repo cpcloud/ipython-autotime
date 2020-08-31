@@ -17,7 +17,7 @@ setup(
     description='Time everything in IPython',
     long_description=long_description,
     license='Apache',
-    install_requires=['ipython'],
+    install_requires=['ipython', 'monotonic ; python_version < "3.3"'],
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',
