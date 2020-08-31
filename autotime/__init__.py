@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-import time
+from time import monotonic
 
 from IPython.core.magics.execution import _format_time as format_delta
 
@@ -13,26 +13,21 @@ class LineWatcher(object):
     -----
     * Register the `start` and `stop` methods with the IPython events API.
     """
-
-    def __init__(self):
-        self.start_time = 0.0
+    __slots__ = ['start_time']
 
     def start(self):
-        self.start_time = time.time()
+        self.start_time = monotonic()
 
     def stop(self):
-        stop_time = time.time()
-
-        if self.start_time:
-            diff = stop_time - self.start_time
-            assert diff >= 0
-            print('time: {}'.format(format_delta(diff)))
+        delta = monotonic() - self.start_time
+        print('time: {}'.format(format_delta(delta)))
 
 
 timer = LineWatcher()
 
 
 def load_ipython_extension(ip):
+    timer.start()
     ip.events.register('pre_run_cell', timer.start)
     ip.events.register('post_run_cell', timer.stop)
 
