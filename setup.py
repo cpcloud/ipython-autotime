@@ -12,9 +12,10 @@ setup(
     author_email='cpcloud@gmail.com',
     description='Time everything in IPython',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     license='Apache',
     url='https://github.com/cpcloud/ipython-autotime',
-    use_scm_version={'write_to': 'autotime/_version.py',},
+    use_scm_version={'write_to': 'autotime/_version.py'},
     setup_requires=['setuptools_scm'],
     install_requires=['ipython', 'monotonic ; python_version < "3.3"'],
     classifiers=[
