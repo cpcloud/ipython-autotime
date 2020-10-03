@@ -29,5 +29,5 @@ time: 79.7 ms
 ## Want to turn it off?
 
 ```python
-In [5]: %unload_ext autotime
+In [4]: %unload_ext autotime
 ```
