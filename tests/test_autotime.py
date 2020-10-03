@@ -8,10 +8,10 @@ def test_full_cycle():
     ip = get_ipython()
 
     with tt.AssertPrints('time: '):
-        ip.run_cell("%load_ext autotime")
+        ip.run_cell('%load_ext autotime')
 
     with tt.AssertPrints('time: '):
-        ip.run_cell("x = 1")
+        ip.run_cell('x = 1')
 
-    with tt.AssertPrints(''):
-        ip.run_cell("%unload_ext autotime")
+    with tt.AssertNotPrints('time: '):
+        ip.run_cell('%unload_ext autotime')
