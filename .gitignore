@@ -55,3 +55,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# setuptools_scm
+autotime/_version.py

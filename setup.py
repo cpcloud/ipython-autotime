@@ -1,22 +1,21 @@
-from __future__ import absolute_import, division, print_function
-
-from setuptools import setup, find_packages
-
-import versioneer
+import io
+from setuptools import setup
 
 
-with open('README.md') as f:
+with io.open('README.md') as f:
     long_description = f.read()
 
 
 setup(
     name='ipython-autotime',
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
     author='Phillip Cloud',
+    author_email='cpcloud@gmail.com',
     description='Time everything in IPython',
     long_description=long_description,
     license='Apache',
+    url='https://github.com/cpcloud/ipython-autotime',
+    use_scm_version={'write_to': 'autotime/_version.py',},
+    setup_requires=['setuptools_scm'],
     install_requires=['ipython', 'monotonic ; python_version < "3.3"'],
     classifiers=[
         'Environment :: Console',
@@ -29,5 +28,5 @@ setup(
         'Topic :: Scientific/Engineering',
         'Topic :: Utilities',
     ],
-    packages=find_packages(),
+    packages=['autotime'],
 )

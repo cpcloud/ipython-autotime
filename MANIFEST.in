@@ -1,4 +1,4 @@
-include versioneer.py
-include autotime/_version.py
+global-exclude *
+include autotime/*.py
 include LICENSE
 include README.md

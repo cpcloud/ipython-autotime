@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+from ._version import version as __version__
+
 try:
     from time import monotonic
 except ImportError:
@@ -9,7 +11,6 @@ from IPython.core.magics.execution import _format_time as format_delta
 
 
 class LineWatcher(object):
-
     """Class that implements a basic timer.
 
     Notes
@@ -39,7 +40,3 @@ def unload_ipython_extension(ip):
     ip.events.unregister('pre_run_cell', timer.start)
     ip.events.unregister('post_run_cell', timer.stop)
 
-
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
