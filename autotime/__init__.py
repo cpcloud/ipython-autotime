@@ -28,15 +28,17 @@ class LineWatcher(object):
 
 
 timer = LineWatcher()
+start = timer.start
+stop = timer.stop
 
 
 def load_ipython_extension(ip):
-    timer.start()
-    ip.events.register('pre_run_cell', timer.start)
-    ip.events.register('post_run_cell', timer.stop)
+    start()
+    ip.events.register('pre_run_cell', start)
+    ip.events.register('post_run_cell', stop)
 
 
 def unload_ipython_extension(ip):
-    ip.events.unregister('pre_run_cell', timer.start)
-    ip.events.unregister('post_run_cell', timer.stop)
+    ip.events.unregister('pre_run_cell', start)
+    ip.events.unregister('post_run_cell', stop)
 
