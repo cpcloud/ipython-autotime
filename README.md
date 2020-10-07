@@ -3,7 +3,7 @@ Time everything in IPython
 
 ## Installation:
 
-```
+```console
 $ pip install ipython-autotime
 ```
 
@@ -11,27 +11,23 @@ $ pip install ipython-autotime
 
 ```python
 In [1]: %load_ext autotime
-time: 1433692.87 s
+time: 295 µs
 
 In [2]: x = 1
-time: 730.99 us
+time: 519 µs
 
-In [3]: x + 2
-Out[3]: 3
-time: 2.50 ms
-
-In [4]: x + ''
+In [3]: x / 0
 ---------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-5-bde712cacec5> in <module>()
-----> 1 x + ''
+ZeroDivisionError                         Traceback (most recent call last)
+<ipython-input-3-034eb0c6102b> in <module>
+----> 1 x/0
 
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-time: 156.05 ms
+ZeroDivisionError: division by zero
+time: 79.7 ms
 ```
 
 ## Want to turn it off?
 
 ```python
-In [5]: %unload_ext autotime
+In [4]: %unload_ext autotime
 ```
