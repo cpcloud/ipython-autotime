@@ -10,7 +10,7 @@ def test_full_cycle():
     with tt.AssertPrints('time: '):
         ip.run_cell('%load_ext autotime')
 
-    with tt.AssertPrints('time: '):
+    with tt.AssertPrints(' (started: '):
         ip.run_cell('x = 1')
 
     with tt.AssertNotPrints('time: '):
