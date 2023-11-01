@@ -27,11 +27,11 @@ class LineWatcher(object):
     """
     __slots__ = ['start_time', 'timestamp']
 
-    def start(self):
+    def start(self, *args, **kwargs):
         self.timestamp = localtime()
         self.start_time = monotonic()
 
-    def stop(self):
+    def stop(self, *args, **kwargs):
         delta = monotonic() - self.start_time
         print(
             u'time: {} (started: {})'.format(
